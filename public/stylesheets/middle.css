@@ -1,0 +1,56 @@
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-card img {
+  width: 320px;
+  height: 192px;
+  object-fit: cover;
+}
+
+.category-card span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.category-cart img {
+  width: 280px;
+  height: 256px;
+  object-fit: cover;
+}
+
+.category-cart span{
+  background-color: #c5eec5; /* 배경색 */
+  color: #000; /* 글자색 */
+  border: none; /* 테두리 없음 */
+  padding: 5px 10px; /* 패딩 */
+  border-radius: 5px; 
+  font-size: 0.6rem; /* 글자 크기 */
+  font-weight: bold;
+}
+
+.card-title {
+  font-size: 1.2rem; /* 상품명 글자 크기 */
+  font-weight: bold;
+  margin-top: 13px; /* 상품명 상단 여백 */
+}
+
+.card-text {
+  font-size: 0.8rem; /* 상품정보 글자 크기 */
+  color: gray;
+  margin-bottom: 0;
+}

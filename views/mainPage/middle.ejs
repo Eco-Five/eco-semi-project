@@ -1,0 +1,105 @@
+<!-- 카테고리 -->
+<div class="container py-5">
+  <h2 class="text mb-4 fw-bold">카테고리</h2>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="category-card" onclick="handleCategoryClick('제로웨이스트')">
+        <img src="/images/제로웨이스트1.png" class="img-fluid" alt="제로웨이스트">
+        <span>제로웨이스트</span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="category-card" onclick="handleCategoryClick('유기농 제품')">
+        <img src="/images/유기농제품.jpg" class="img-fluid" alt="유기농 제품">
+        <span>유기농 제품</span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="category-card" onclick="handleCategoryClick('재활용 제품')">
+        <img src="/images/재활용제품.png" class="img-fluid" alt="재활용 제품">
+        <span>재활용 제품</span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="category-card" onclick="handleCategoryClick('에코 패션')">
+        <img src="/images/에코페션.jpg" class="img-fluid" alt="에코 패션">
+        <span>에코 패션</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 카테고리 -->
+
+<!-- 추천제품 -->
+<!-- 1제품 -->
+<div class="container mt-3">
+  <h2 class="text mb-4 fw-bold">추천 제품</h2>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="category-cart" >
+        <img class="card-img-top" src="/images/대나무텀블러.avif" alt="대나무텀블러" >
+        <div class="p-3">
+        <span>친환경 인증</span>
+        <h4 class="card-title">대나무 텀블러</h4>
+        <p class="card-text">100% 생분해 가능한 소재</p>
+        <div class="d-flex justify-content-between align-items-center p-2">
+          <p class  ="mb-0 fs-6 fw-bold">32,000원</p> <!-- 텍스트 크기 키움 -->
+          <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="category-cart" >
+        <img class="card-img-top" src="/images/유기농 에코백.jpg" alt="유기농 에코백" >
+      <div class="p-3">
+        <span>유기농 인증</span>
+        <h4 class="card-title">유기농 에코백</h4>
+        <p class="card-text">친환경 유기농 면 소재</p>
+        <div class="d-flex justify-content-between align-items-center p-2">
+          <p class  ="mb-0 fs-6 fw-bold">15,000원</p> <!-- 텍스트 크기 키움 -->
+          <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="category-cart" >
+        <img class="card-img-top" src="/images/천연비누.jpg" alt="천연비누" >
+      <div class="p-3">
+        <span>천연 성분</span>
+        <h4 class="card-title">천연비누</h4>
+        <p class="card-text">100% 자연 성분</p>
+          <div class="d-flex justify-content-between align-items-center p-2">
+            <p class ="mb-0 fs-6 fw-bold">8,000원</p> <!-- 텍스트 크기 키움 -->
+            <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="category-cart" >
+        <img class="card-img-top" src="/images/대나무 수저세트.avif" alt="대나무 수저세트" >
+      <div class="p-3">
+        <span>제로웨이스트</span>
+        <h4 class="card-title">대나무 수저세트</h4>
+        <p class="card-text">친환경 대나무 소재</p>
+        <div class="d-flex justify-content-between align-items-center p-2">
+          <p class  ="mb-0 fs-6 fw-bold">12,000원</p> <!-- 텍스트 크기 키움 -->
+          <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!--2제품-->
+
+
+<!--추천 제품-->
+
+<%-include('middleModal.ejs') %>

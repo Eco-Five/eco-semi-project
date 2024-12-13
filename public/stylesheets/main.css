@@ -1,0 +1,103 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Environmental Impact Section */
+.environment-impact {
+  background-color: #ffffff;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+}
+
+.impact-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.impact-card {
+  background-color: #f0f9f5;
+  border: 1px solid #d4e8df;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 437.33px;
+  height: 176px;
+}
+
+.impact-card .icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.impact-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* Brand Story Section */
+.brand-story {
+  background-color: #ffffff;
+  padding: 30px 20px;
+}
+
+.brand-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.brand-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  width: 437.33px;
+  height: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.brand-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.brand-card h3 {
+  margin: 10px 13px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.brand-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 10px 15px;
+  text-align: left;
+}
+
+.brand-card a {
+  display: block;
+  margin: 5px 0;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  text-align: left;
+}

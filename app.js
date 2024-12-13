@@ -1,41 +1,32 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const app = express(); // Create the Express application
 
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Set up EJS as the view engine
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// Set up static files middleware
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// Main Page Route
+app.get('/', (req, res) => {
+    res.render('index'); // Renders the `index.ejs` file from the `views` folder
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+// Brand Detail Routes
+app.get('/brand/eco-green', (req, res) => {
+    res.send('<h1>Eco Green Page</h1><p>More information about Eco Green.</p>');
 });
 
+app.get('/brand/nature-care', (req, res) => {
+    res.send('<h1>Nature Care Page</h1><p>More information about Nature Care.</p>');
+});
+
+app.get('/brand/recycle-wear', (req, res) => {
+    res.send('<h1>Recycle Wear Page</h1><p>More information about Recycle Wear.</p>');
+});
+
+// Export the app for use in www.js
 module.exports = app;

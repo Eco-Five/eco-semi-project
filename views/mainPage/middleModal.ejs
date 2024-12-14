@@ -1,19 +1,36 @@
-<script>
-  function handleCategoryClick(category) {
-    alert(category + ' 카테고리를 선택했습니다.');
-    // 추가 동작을 여기에 작성할 수 있습니다.
-  }
-</script>
 
-<script>
-  $("#list_book") .on("click",".card .cart",async function(){
-    console.log("cart click")
-    if(uid){
-      const book=JSON.parse($(this).attr("book"))
-      await set(ref(db, `cart/${uid}/${book.isbn}`), book)
-      alert("장바구니에 등록되었습니다.")
-    }else{
-      location.href="/"
-    }
-  })
-  </script>
+<div class="modal fade" id="modal{{@index}}" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">장바구니 담기</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- 상품 정보 -->
+        <div class="d-flex align-items-center">
+          <img src="{{image}}" alt={{alt}} class="me-3" style="width: 80px; height: auto; border-radius: 5px;">
+          <div>
+            <h6>{{alt}}</h6>
+            <p class="text-muted mb-0">{{price}}</p>
+          </div>
+        </div>
+        <!-- 수량 선택 -->
+        <p class="mt-3">선택하신 상품을 장바구니에 담으시겠습니까?</p>
+        <div class="d-flex align-items-center justify-content-start">
+          <label for="quantity" class="me-3">수량</label>
+          <div class="input-group" style="width: 120px;">
+            <button class="btn btn-outline-secondary" type="button" id="decrement">-</button>
+            <input type="text" class="form-control text-center" id="quantity" value="1">
+            <button class="btn btn-outline-secondary" type="button" id="increment">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-dark">장바구니 담기</button>
+      </div>
+    </div>
+  </div>
+</div>
+

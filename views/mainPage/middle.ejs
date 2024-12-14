@@ -51,6 +51,12 @@
   cardContainer.innerHTML = template(data);
 </script>
 
+<script>
+  function handleCategoryClick(category) {
+    alert(category + ' 카테고리를 선택했습니다.');
+    // 추가 동작을 여기에 작성할 수 있습니다.
+  }
+</script>
 
 
 <!-- 추천제품 -->
@@ -75,15 +81,18 @@
             <p class="card-text">{{description}}</p>
             <div class="d-flex justify-content-between align-items-center p-2">
               <p class="mb-0 fs-6 fw-bold">{{price}}</p> <!-- 텍스트 크기 키움 -->
-              <button class="btn btn-dark btn-sm px-3 py-1" onclick="handleClick('category')">장바구니</button> <!-- 버튼 크기 조정 -->
+              <button index="{{@index}}" class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
             </div>
           </div>
         </div>
+        <%-include('middleModal.ejs') %> 
       </div>
       {{/each}}
     </div>
   </div>
 </script>
+
+
 
 
 <script>
@@ -128,18 +137,31 @@
 
 <!--추천 제품-->
 
+  
+  
 <script>
-  $("#category-cart") .on("click",".card .cart",async function(){
-    console.log("cart click")
-    if(uid){
-      const book=JSON.parse($(this).attr("book"))
-      await set(ref(db, `cart/${uid}/${book.isbn}`), book)
-      alert("장바구니에 등록되었습니다.")
-    }else{
-      location.href="/"
-    }
+  $("#cart-container").on("click", ".btn", function(){
+    //선택한 도서 이미지의 index값을 모달 번호에 사용해야 한다
+    let index = $(this).attr("index")
+    console.log(index)
+    $(`#modal${index}`).modal("show")
   })
-  </script>
+</script>
 
-<%-include('middleModal.ejs') %>
 
+
+<script>
+  const decrementBtn = document.getElementById('decrement');
+  const incrementBtn = document.getElementById('increment');
+  const quantityInput = document.getElementById('quantity');
+
+  decrementBtn.addEventListener('click', () => {
+    let currentValue = parseInt(quantityInput.value) || 1;
+    if (currentValue > 1) quantityInput.value = currentValue - 1;
+  });
+
+  incrementBtn.addEventListener('click', () => {
+    let currentValue = parseInt(quantityInput.value) || 1;
+    quantityInput.value = currentValue + 1;
+  });
+</script>

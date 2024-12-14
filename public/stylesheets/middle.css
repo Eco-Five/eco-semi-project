@@ -54,3 +54,11 @@
   color: gray;
   margin-bottom: 0;
 }
+
+
+.modal-content {
+  border-radius: 10px;
+}
+.modal-footer button {
+  border-radius: 5px;
+}

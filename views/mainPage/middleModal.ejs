@@ -6,7 +6,14 @@
 </script>
 
 <script>
-  function handleCategoryClick(cart) {
-    alert(cart + ' 장바구니에 넣었습니다.');
-  }
-</script>
+  $("#list_book") .on("click",".card .cart",async function(){
+    console.log("cart click")
+    if(uid){
+      const book=JSON.parse($(this).attr("book"))
+      await set(ref(db, `cart/${uid}/${book.isbn}`), book)
+      alert("장바구니에 등록되었습니다.")
+    }else{
+      location.href="/"
+    }
+  })
+  </script>

@@ -1,105 +1,145 @@
 <!-- 카테고리 -->
-<div class="container py-5">
-  <h2 class="text mb-4 fw-bold">카테고리</h2>
-  <div class="row g-4">
-    <div class="col-md-3">
-      <div class="category-card" onclick="handleCategoryClick('제로웨이스트')">
-        <img src="/images/제로웨이스트1.png" class="img-fluid" alt="제로웨이스트">
-        <span>제로웨이스트</span>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="category-card" onclick="handleCategoryClick('유기농 제품')">
-        <img src="/images/유기농제품.jpg" class="img-fluid" alt="유기농 제품">
-        <span>유기농 제품</span>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="category-card" onclick="handleCategoryClick('재활용 제품')">
-        <img src="/images/재활용제품.png" class="img-fluid" alt="재활용 제품">
-        <span>재활용 제품</span>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="category-card" onclick="handleCategoryClick('에코 패션')">
-        <img src="/images/에코페션.jpg" class="img-fluid" alt="에코 패션">
-        <span>에코 패션</span>
-      </div>
-    </div>
+
+<div class="container my-4">
+  <div class="row" id="card-container">
+    <!-- Handlebars 템플릿이 여기에 렌더링됩니다. -->
   </div>
 </div>
 
+<script id="card-template" type="text/x-handlebars-template">
+  <div class="container py-5">
+    <h2 class="text mb-4 fw-bold">카테고리</h2>
+    <div class="row g-4">
+      {{#each cards}}
+      <div class="col-md-3">
+        <div class="category-card" onclick="handleCategoryClick('{{alt}}')">
+          <img src="{{image}}" class="img-fluid" alt="{{alt}}">
+          <span>{{alt}}</span>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</script>
 
-<!-- 카테고리 -->
+
+<script>
+  const data = {
+    cards: [
+      {
+        image: "/images/제로웨이스트1.png",
+        alt: "제로웨이스트",
+      },
+      {
+        image: "/images/유기농제품.jpg",
+        alt: "유기농 제품",
+      },
+      {
+        image: "/images/재활용제품.png",
+        alt: "재활용 제품",
+      },
+      {
+        image: "/images/에코페션.jpg",
+        alt: "에코 패션",
+      }
+    ]
+  };
+
+  const templateSource = document.getElementById("card-template").innerHTML;
+  const template = Handlebars.compile(templateSource);
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = template(data);
+</script>
+
+
 
 <!-- 추천제품 -->
-<!-- 1제품 -->
-<div class="container mt-3">
-  <h2 class="text mb-4 fw-bold">추천 제품</h2>
-  <div class="row g-4">
-    <div class="col-md-3">
-      <div class="category-cart" >
-        <img class="card-img-top" src="/images/대나무텀블러.avif" alt="대나무텀블러" >
-        <div class="p-3">
-        <span>친환경 인증</span>
-        <h4 class="card-title">대나무 텀블러</h4>
-        <p class="card-text">100% 생분해 가능한 소재</p>
-        <div class="d-flex justify-content-between align-items-center p-2">
-          <p class  ="mb-0 fs-6 fw-bold">32,000원</p> <!-- 텍스트 크기 키움 -->
-          <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
-        </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="category-cart" >
-        <img class="card-img-top" src="/images/유기농 에코백.jpg" alt="유기농 에코백" >
-      <div class="p-3">
-        <span>유기농 인증</span>
-        <h4 class="card-title">유기농 에코백</h4>
-        <p class="card-text">친환경 유기농 면 소재</p>
-        <div class="d-flex justify-content-between align-items-center p-2">
-          <p class  ="mb-0 fs-6 fw-bold">15,000원</p> <!-- 텍스트 크기 키움 -->
-          <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
-        </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="category-cart" >
-        <img class="card-img-top" src="/images/천연비누.jpg" alt="천연비누" >
-      <div class="p-3">
-        <span>천연 성분</span>
-        <h4 class="card-title">천연비누</h4>
-        <p class="card-text">100% 자연 성분</p>
-          <div class="d-flex justify-content-between align-items-center p-2">
-            <p class ="mb-0 fs-6 fw-bold">8,000원</p> <!-- 텍스트 크기 키움 -->
-            <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
+
+<div class="container my-4">
+  <div class="row" id="cart-container">
+    <!-- Handlebars 템플릿이 여기에 렌더링됩니다. -->
+  </div>
+</div>
+
+<script id="cart-template" type="text/x-handlebars-template">
+  <div class="container mt-3">
+    <h2 class="text mb-4 fw-bold">추천 제품</h2>
+    <div class="row g-4">
+      {{#each cards}}
+      <div class="col-md-3">
+        <div class="category-cart">
+          <img class="img-fluid" src="{{image}}" alt="{{alt}}">
+          <div class="p-3">
+            <span>{{mark}}</span>
+            <h4 class="card-title">{{alt}}</h4>
+            <p class="card-text">{{description}}</p>
+            <div class="d-flex justify-content-between align-items-center p-2">
+              <p class="mb-0 fs-6 fw-bold">{{price}}</p> <!-- 텍스트 크기 키움 -->
+              <button class="btn btn-dark btn-sm px-3 py-1" onclick="handleClick('category')">장바구니</button> <!-- 버튼 크기 조정 -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="category-cart" >
-        <img class="card-img-top" src="/images/대나무 수저세트.avif" alt="대나무 수저세트" >
-      <div class="p-3">
-        <span>제로웨이스트</span>
-        <h4 class="card-title">대나무 수저세트</h4>
-        <p class="card-text">친환경 대나무 소재</p>
-        <div class="d-flex justify-content-between align-items-center p-2">
-          <p class  ="mb-0 fs-6 fw-bold">12,000원</p> <!-- 텍스트 크기 키움 -->
-          <button class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
-        </div>
-        </div>
-      </div>
+      {{/each}}
     </div>
   </div>
-  
-</div>
+</script>
 
-<!--2제품-->
 
+<script>
+  const data2 = {
+    cards: [
+      {
+        image: "/images/대나무텀블러.webp",
+        alt: "대나무텀블러",
+        description: "100% 생분해 가능한 소재",
+        price: "32,000원",
+        mark:"친환경 인증"
+      },
+      {
+        image: "/images/유기농 에코백.jpg",
+        alt: "유기농 에코백",
+        description: "친환경 유기농 면 소재",
+        price: "15,000원",
+        mark:"유기농 인증"
+      },
+      {
+        image: "/images/천연비누.jpg",
+        alt: "천연 비누",
+        description: "100% 자연 성분",
+        price: "8,000원",
+        mark:"천연 성분"
+      },
+      {
+        image: "/images/대나무 수저세트.avif",
+        alt: "대나무 수저세트",
+        description: "친환경 대나무 소재",
+        price: "12,000원",
+        mark:"제로웨이스트"
+      }
+    ]
+  };
+
+  const templateSource2 = document.getElementById("cart-template").innerHTML;
+  const template2 = Handlebars.compile(templateSource2);
+  const cardContainer2 = document.getElementById("cart-container");
+  cardContainer2.innerHTML = template2(data2);
+</script>
 
 <!--추천 제품-->
 
+<script>
+  $("#category-cart") .on("click",".card .cart",async function(){
+    console.log("cart click")
+    if(uid){
+      const book=JSON.parse($(this).attr("book"))
+      await set(ref(db, `cart/${uid}/${book.isbn}`), book)
+      alert("장바구니에 등록되었습니다.")
+    }else{
+      location.href="/"
+    }
+  })
+  </script>
+
 <%-include('middleModal.ejs') %>
+

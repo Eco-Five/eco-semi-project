@@ -151,17 +151,15 @@
 
 
 <script>
-  const decrementBtn = document.getElementById('decrement');
-  const incrementBtn = document.getElementById('increment');
-  const quantityInput = document.getElementById('quantity');
+  $("#cart-container").on("click", "#increment", function() {
+    let index = $(this).attr("index")
+    let cnt = parseInt($(`#quant${index}`).val()) + 1
+    $(`#quant${index}`).val(cnt)
+  })
 
-  decrementBtn.addEventListener('click', () => {
-    let currentValue = parseInt(quantityInput.value) || 1;
-    if (currentValue > 1) quantityInput.value = currentValue - 1;
-  });
-
-  incrementBtn.addEventListener('click', () => {
-    let currentValue = parseInt(quantityInput.value) || 1;
-    quantityInput.value = currentValue + 1;
-  });
+  $("#cart-container").on("click", "#decrement", function() {
+    let index = $(this).attr("index")
+    let cnt = parseInt($(`#quant${index}`).val()) - 1
+    $(`#quant${index}`).val(cnt)
+  })
 </script>

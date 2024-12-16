@@ -1,0 +1,165 @@
+<!-- 카테고리 -->
+
+<div class="container my-4">
+  <div class="row" id="card-container">
+    <!-- Handlebars 템플릿이 여기에 렌더링됩니다. -->
+  </div>
+</div>
+
+<script id="card-template" type="text/x-handlebars-template">
+  <div class="container py-5">
+    <h2 class="text mb-4 fw-bold">카테고리</h2>
+    <div class="row g-4">
+      {{#each cards}}
+      <div class="col-md-3">
+        <div class="category-card" onclick="handleCategoryClick('{{alt}}')">
+          <img src="{{image}}" class="img-fluid" alt="{{alt}}">
+          <span>{{alt}}</span>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</script>
+
+
+<script>
+  const data = {
+    cards: [
+      {
+        image: "/images/제로웨이스트1.png",
+        alt: "제로웨이스트",
+      },
+      {
+        image: "/images/유기농제품.jpg",
+        alt: "유기농 제품",
+      },
+      {
+        image: "/images/재활용제품.png",
+        alt: "재활용 제품",
+      },
+      {
+        image: "/images/에코페션.jpg",
+        alt: "에코 패션",
+      }
+    ]
+  };
+
+  const templateSource = document.getElementById("card-template").innerHTML;
+  const template = Handlebars.compile(templateSource);
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = template(data);
+</script>
+
+<script>
+  function handleCategoryClick(category) {
+    alert(category + ' 카테고리를 선택했습니다.');
+    // 추가 동작을 여기에 작성할 수 있습니다.
+  }
+</script>
+
+
+<!-- 추천제품 -->
+
+<div class="container my-4">
+  <div class="row" id="cart-container">
+    <!-- Handlebars 템플릿이 여기에 렌더링됩니다. -->
+  </div>
+</div>
+
+<script id="cart-template" type="text/x-handlebars-template">
+  <div class="container mt-3">
+    <h2 class="text mb-4 fw-bold">추천 제품</h2>
+    <div class="row g-4">
+      {{#each cards}}
+      <div class="col-md-3">
+        <div class="category-cart">
+          <img class="img-fluid" src="{{image}}" alt="{{alt}}">
+          <div class="p-3">
+            <span>{{mark}}</span>
+            <h4 class="card-title">{{alt}}</h4>
+            <p class="card-text">{{description}}</p>
+            <div class="d-flex justify-content-between align-items-center p-2">
+              <p class="mb-0 fs-6 fw-bold">{{price}}</p> <!-- 텍스트 크기 키움 -->
+              <button index="{{@index}}" class="btn btn-dark btn-sm px-3 py-1">장바구니</button> <!-- 버튼 크기 조정 -->
+            </div>
+          </div>
+        </div>
+        <%-include('middleModal.ejs') %> 
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</script>
+
+
+
+
+<script>
+  const data2 = {
+    cards: [
+      {
+        image: "/images/대나무텀블러.webp",
+        alt: "대나무텀블러",
+        description: "100% 생분해 가능한 소재",
+        price: "32,000원",
+        mark:"친환경 인증"
+      },
+      {
+        image: "/images/유기농 에코백.jpg",
+        alt: "유기농 에코백",
+        description: "친환경 유기농 면 소재",
+        price: "15,000원",
+        mark:"유기농 인증"
+      },
+      {
+        image: "/images/천연비누.jpg",
+        alt: "천연 비누",
+        description: "100% 자연 성분",
+        price: "8,000원",
+        mark:"천연 성분"
+      },
+      {
+        image: "/images/대나무 수저세트.avif",
+        alt: "대나무 수저세트",
+        description: "친환경 대나무 소재",
+        price: "12,000원",
+        mark:"제로웨이스트"
+      }
+    ]
+  };
+
+  const templateSource2 = document.getElementById("cart-template").innerHTML;
+  const template2 = Handlebars.compile(templateSource2);
+  const cardContainer2 = document.getElementById("cart-container");
+  cardContainer2.innerHTML = template2(data2);
+</script>
+
+<!--추천 제품-->
+
+  
+  
+<script>
+  $("#cart-container").on("click", ".btn", function(){
+    //선택한 도서 이미지의 index값을 모달 번호에 사용해야 한다
+    let index = $(this).attr("index")
+    console.log(index)
+    $(`#modal${index}`).modal("show")
+  })
+</script>
+
+
+
+<script>
+  $("#cart-container").on("click", "#increment", function() {
+    let index = $(this).attr("index")
+    let cnt = parseInt($(`#quant${index}`).val()) + 1
+    $(`#quant${index}`).val(cnt)
+  })
+
+  $("#cart-container").on("click", "#decrement", function() {
+    let index = $(this).attr("index")
+    let cnt = parseInt($(`#quant${index}`).val()) - 1
+    $(`#quant${index}`).val(cnt)
+  })
+</script>

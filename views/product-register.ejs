@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Registration</title>
+    <link rel="stylesheet" href="/stylesheets/product-register.css">
+</head>
+<body>
+    <header>
+        <div class="logo">로고</div>
+        <div class="welcome-message">판매자님 환영합니다</div>
+    </header>
+
+    <main>
+        <section class="product-register">
+            <h2>상품 등록</h2>
+            <p>판매하실 상품의 정보를 입력해주세요.</p>
+            
+            <form action="/products/register-product" method="POST" enctype="multipart/form-data">
+              <!-- Basic Info -->
+                <fieldset>
+                    <legend>기본 정보</legend>
+                    <div class="form-group">
+                        <label for="product-name">상품명</label>
+                        <input type="text" id="product-name" name="productName" placeholder="상품명을 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">판매가격</label>
+                        <input type="number" id="price" name="price" placeholder="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sku">SKU/상품코드</label>
+                        <input type="text" id="sku" name="sku" placeholder="상품 코드를 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">카테고리</label>
+                        <select id="category" name="category" required>
+                            <option value="">카테고리를 선택하세요</option>
+                            <option value="eco">친환경 제품</option>
+                            <option value="recycled">재활용 제품</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <!-- Product Image -->
+                <fieldset>
+                    <legend>상품 이미지</legend>
+                    <div class="form-group">
+                        <label for="product-image">대표 이미지</label>
+                        <input type="file" id="product-image" name="image" accept=".png, .jpg, .jpeg, .gif" required>
+                        <p>이미지 업로드 또는 드래그 앤 드롭<br>PNG, JPG, GIF 최대 10MB</p>
+                    </div>
+                </fieldset>
+
+                <!-- Detailed Info -->
+                <fieldset>
+                    <legend>상품 상세 정보</legend>
+                    <div class="form-group">
+                        <label for="description">상품 설명</label>
+                        <textarea id="description" name="description" rows="4" placeholder="상품에 대한 상세한 설명을 입력하세요"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Options and Stock -->
+                <fieldset>
+                    <legend>옵션 및 재고</legend>
+                    <div class="form-group">
+                        <label for="options">옵션 설정</label>
+                        <input type="text" id="options" name="options" placeholder="옵션명 (예: 색상, 사이즈)">
+                        <button type="button" class="add-option">추가</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">재고 수량</label>
+                        <input type="number" id="stock" name="stock" placeholder="0">
+                    </div>
+                </fieldset>
+
+                <!-- Shipping Info -->
+                <fieldset>
+                    <legend>배송 정보</legend>
+                    <div class="form-group">
+                        <label for="shipping-cost">배송비</label>
+                        <input type="number" id="shipping-cost" name="shippingCost" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping-time">출고 소요일</label>
+                        <select id="shipping-time" name="shippingTime">
+                            <option value="same-day">당일출고</option>
+                            <option value="1-day">1일 소요</option>
+                            <option value="2-days">2일 소요</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <!-- Sale Settings -->
+                <fieldset>
+                    <legend>판매 설정</legend>
+                    <div class="form-group">
+                        <label for="start-date">판매 시작일</label>
+                        <input type="date" id="start-date" name="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="end-date">판매 종료일</label>
+                        <input type="date" id="end-date" name="endDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="max-quantity">최대 구매 수량</label>
+                        <input type="number" id="max-quantity" name="maxQuantity" placeholder="0">
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button type="button" class="save-draft">임시저장</button>
+                    <button type="button" class="preview">미리보기</button>
+                    <button type="submit" class="submit">등록하기</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 그린라이프. All rights reserved.</p>
+    </footer>
+</body>
+</html>

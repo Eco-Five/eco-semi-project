@@ -7,13 +7,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/middle.css">
     <link rel="stylesheet" href="/stylesheets/footer.css">
     <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/main.css">
+
+    <!-- Slick -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>   
 </head>
 <body>
+
+    <!-- header  -->
+    <%-include('mainPage/header.ejs') %>
 
     <!-- hoon -->
     <%- include('mainPage/middle') %>
@@ -25,6 +34,7 @@
     <%- include('mainPage/brand-story') %>
 
     <!-- kms -->
-     <%- include('mainPage/footer') %>
+    <%- include('mainPage/footer') %>
+    
 </body>
 </html>
